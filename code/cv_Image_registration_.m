@@ -43,14 +43,15 @@ elseif dmode==3
     [tform, inlierIdx] = estimateGeometricTransform2D(...
     matchedDistorted, matchedOriginal,'similarity','Maxdistance',1.5,'Confidence',99,'MaxNumTrials',1000);
 end
-%% 绘制特征点匹配图
-% inlierDistorted = matchedDistorted(inlierIdx, :);
-% inlierOriginal  = matchedOriginal(inlierIdx, :);
-% figure;
-% showMatchedFeatures(original,distorted,inlierOriginal,inlierDistorted);
-% title('Matching points (inliers only)');
-% legend('ptsOriginal','ptsDistorted');
-%% 3   构建布特沃斯函数实现边缘渐变效果
+
+% 绘制特征点匹配图
+inlierDistorted = matchedDistorted(inlierIdx, :);
+inlierOriginal  = matchedOriginal(inlierIdx, :);
+figure;
+showMatchedFeatures(original,distorted,inlierOriginal,inlierDistorted);
+title('Matching points (inliers only)');
+legend('ptsOriginal','ptsDistorted');
+% 3   构建布特沃斯函数实现边缘渐变效果
 f1=im2double(dist0);
 t1=zeros(size(f1)); 
 t2=t1;
